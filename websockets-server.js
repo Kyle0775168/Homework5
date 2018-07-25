@@ -22,7 +22,6 @@ ws.on('connection', function(socket) {
     var firstWord = stringArray[0];
 
     if (firstWord == command) {
-      // The code will execute only when client changes the topic
       var result = data.substr(data.indexOf(' ') + 1);
       ws.clients.forEach(function(clientSocket) {
         clientSocket.send('*** Topic has changed to ' + '\'' + result + '\'');
@@ -38,7 +37,6 @@ ws.on('connection', function(socket) {
         messages.unshift(new_msg);
       }
     } else {
-      // The code will execute in all other scenarios
       messages.push(data);
       ws.clients.forEach(function(clientSocket) {
         clientSocket.send(data);
