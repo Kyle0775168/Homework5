@@ -21,6 +21,8 @@ var server = http.createServer(function(req, res){
       handleError(err, res);
       return;
     } else {
+      var mimeType = mime.getType(filePath);
+      console.log(mimeType);
       res.setHeader('Content-Type', type);
       res.end(data);
     }
