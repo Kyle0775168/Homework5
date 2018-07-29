@@ -1,10 +1,12 @@
 var http = require('http');
 var fs = require('fs');
 var extract = require('./extract');
-var wss = require('./websockets-server');
+var wss = require('./websockets-server');  // chapter 16 page316
 // const mime = require('mime');
 
 var handleError = function (err, res) {
+  // res.writeHead(404);
+  res.setHeader('Content-Type', 'text/html');
   fs.readFile('./app/error.html', function(err, data) {
     res.end(data);
   });
